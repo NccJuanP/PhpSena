@@ -61,7 +61,7 @@ FLW2N011MqjakBkx31/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" cross origin="
     if ($doc == "") {
         echo "Digita un documento por favor. (Ej: 123)";
     } else {
-        $resultados = mysqli_query($conexion, "SELECT FROM $tabla_db1 WHERE doc = $doc");
+        $resultados = mysqli_query($conexion, "SELECT * FROM propietario WHERE doc = $doc");
         while ($consulta = mysqli_fetch_array($resultados)) {
             echo "<table width=\"100%\" border=\"1\">
                     <tr>

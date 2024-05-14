@@ -11,4 +11,3 @@ mysqli_query($conexion, "INSERT INTO propietario (doc, nombre, direccion, telefo
 include("cerrar_conexion.php");
 echo "Se insertaron Correctamente";
 }
-mysqli_close($conexion);
