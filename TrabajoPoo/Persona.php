@@ -15,10 +15,9 @@ class Persona{
         return "Ojos: $this->ojos, Cejas: $this->cejas, Nariz: $this->nariz";
     }
 
-    public function 
-    (){
+    /* public function (){
         echo "Información de la persona: ". $this->ObtenerInformacion();
-    }
+    } */
 
 
 }
