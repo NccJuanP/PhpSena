@@ -218,7 +218,7 @@ if($usuario == null){
                                 <select class="form-control" id="titulo_eliminar" name="titulo_eliminar">
                                     <!-- Listar los nombre de poemas actuales -->
                                     <?php
-                                    $sql = "SELECT id, titulo FROM poemas";
+                                    $sql = "SELECT * FROM poemas";
                                     $result = mysqli_query($conn, $sql);
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         echo "<option value='{$row['id']}'>{$row['titulo']}</option>";
@@ -227,15 +227,32 @@ if($usuario == null){
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-danger">Eliminar Poema</button>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit" onclick="editar()">
                                 Editar Poemas
                             </button>
 
                         </form>
                     </div>
                 </div>
+                <script>
+                    function editar(){
+                        <?php
+                            if(isset($_POST["edit"])){
+                                $id = $_POST["titulo_eliminar"];
+                                $sql = "SELECT * FROM poemas WHERE id = $id";
+                                $result = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_assoc($result);
+                                $titulo = $row['titulo'];
+                                $autor = $row['autor'];
+                                $contenido = $row['contenido'];
+                            }  ?>
+                        document.getElementById("nuevo_titulo").value = "<?php echo $titulo ?>"
+                        document.getElementById("nuevo_contenido").value = "<?php echo $contenido ?>"
+                    }
+                </script>
             <?php
-            }
+
+                    }
             ?>
             </div>
         </div>
