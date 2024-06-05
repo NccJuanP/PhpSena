@@ -1,9 +1,9 @@
 <?php
 
 include_once ("../Data/DbContext.php");
-include("IStudentsRepository.php");
+include("ISubjectsRepository.php");
 
-class StudentRepository implements IStudentsRepository
+class SubjectsRepository implements ISubjectsRepository
 {
     
     private $conn;
@@ -12,12 +12,12 @@ class StudentRepository implements IStudentsRepository
         $db = new DbContext();
         $this->conn = $db->DbSet(); 
     }
-    public function Add($Student)
+    public function Add($Subject)
     {
-        $stmt = $this->conn->prepare("INSERT INTO Students (Name, Grupo) VALUES (?, ?)");
-        $name = $Student->getName();
-        $grupo = $Student->getGrupo();
-        $stmt->bind_param("ss", $name,  $grupo);
+        $stmt = $this->conn->prepare("INSERT INTO Subjects (Name, Description) VALUES (?, ?)");
+        $name = $Subject->getName();
+        $description = $Subject->getDescription();
+        $stmt->bind_param("ss", $name,  $description);
 
         if ($stmt->execute()) {
             echo "Los Datos se han guardado exitosamente";
@@ -42,7 +42,7 @@ class StudentRepository implements IStudentsRepository
 
     public function Remove($Id)
     {
-        $stmt =  $this->conn->prepare("DELETE FROM `Students` WHERE Id = ?");
+        $stmt =  $this->conn->prepare("DELETE FROM `Subjects` WHERE Id = ?");
         $stmt->bind_param("i", $Id);
 
         if ($stmt->execute()) {

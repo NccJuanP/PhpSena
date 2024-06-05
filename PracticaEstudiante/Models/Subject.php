@@ -1,14 +1,14 @@
 <?php
 
-class Student {
+class Subject {
     private $Id;
     private $Name;
-    private $Grupo;
+    private $Description;
 
-/*     public function __construct($Name, $Grupo) {
+    public function __construct($Name, $Description) {
         $this->Name = $Name;
-        $this->Grupo = $Grupo;
-    } */
+        $this->Description = $Description;
+    }
 
     public function getId() {
         return $this->Id;
@@ -18,8 +18,8 @@ class Student {
         return $this->Name;
     }
 
-    public function getGrupo() {
-        return $this->Grupo;
+    public function getDescription() {
+        return $this->Description;
     }
 
     public function setId($Id) {
@@ -30,7 +30,7 @@ class Student {
         $this->Name = $Name;
     }
 
-    public function setGrupo($Grupo) {
-        $this->Grupo = $Grupo;
+    public function setDescription($Description) {
+        $this->Description = $Description;
     }
 }
