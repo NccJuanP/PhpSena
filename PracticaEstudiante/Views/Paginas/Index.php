@@ -17,7 +17,7 @@ include(__DIR__ . "/../Templates/nav.php");
             <div class="card-body">
                 <h5 class="card-title">Subjects</h5>
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">Go Subjects</a>
+                <a href="./Subjects/Index.php" class="btn btn-primary">Go Subjects</a>
             </div>
         </div>
     </div>

@@ -5,11 +5,6 @@ class Subject {
     private $Name;
     private $Description;
 
-    public function __construct($Name, $Description) {
-        $this->Name = $Name;
-        $this->Description = $Description;
-    }
-
     public function getId() {
         return $this->Id;
     }

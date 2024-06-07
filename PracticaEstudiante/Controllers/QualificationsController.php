@@ -1,7 +1,6 @@
 <?php 
 
-include_once("../Services/Qualifications/QualificationsRepository.php");
-include_once("../Models/Qualification.php");
+include_once(__DIR__ . '/../Services/Qualifications/QualificationsRepository.php');
 
 class QualificationsController{
     public function Index(){

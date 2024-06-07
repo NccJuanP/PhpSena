@@ -1,7 +1,6 @@
 <?php 
 
-include_once("../Services/Subjects/SubjectsRepository.php");
-include_once("../Models/Subject.php");
+include(__DIR__ . '/../Services//Subjects/SubjectsRepository.php');
 
 class SubjectController{
     public function Index(){
@@ -36,15 +35,22 @@ class SubjectController{
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(isset($_POST['Create'])){
-        $Subject = new Subject($_POST['NameSubject'], $_POST['Description']);
+        $Subject = new Subject();
+        $Subject->setName($_POST['NameSubject']);
+        $Subject->setDescription($_POST['Description']);
         $SubjectController = new SubjectController();
         $SubjectController->Add($Subject);
     }
 
     else if(isset($_POST['Update'])){
-        $Subject = new Subject($_POST['NameSubject'], $_POST['Description']);
+        $Subject = new Subject();
+        $Subject->setName($_POST['NameSubject']);
+        $Subject->setDescription($_POST['Description']);
+        $id = $_POST['Id'];
         $SubjectController = new SubjectController();
-        $SubjectController->Update($Subject, $_POST['Id']);
+        $SubjectController->Update($Subject, $id);
+        header("Location: ../Views/Paginas/Subjects/Index.php");
+
     }
 
     else if(isset($_POST['Delete'])){
@@ -55,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else if(isset($_POST['GetById'])){
         $SubjectController = new SubjectController();
         $Subject = $SubjectController->GetById($_POST['Id']);
+
     }
 
     else if(isset($_POST['GetAll'])){

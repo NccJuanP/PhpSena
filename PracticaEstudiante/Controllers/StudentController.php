@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $student->setGrupo($_POST['GrupoStudent']);
         $StudentController = new StudentController();
         $StudentController->Add($student);
+        header("Location: ../Views/Paginas/Students/Index.php");
     }
 
     else if(isset($_POST['Update'])){
@@ -45,12 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id =  $_POST['IdStudent'];
         $StudentController = new StudentController();
         $StudentController->Update($student, $id);
+        header("Location: ../Views/Paginas/Students/Index.php");
     }
 
     else if(isset($_POST['Delete'])){
         $id = ($_POST['IdStudent']);
         $StudentController = new StudentController();
         $StudentController->Remove($id);
+        header("Location: ../Views/Paginas/Students/Index.php");
     }
 
     else if(isset($_POST['GetById'])){

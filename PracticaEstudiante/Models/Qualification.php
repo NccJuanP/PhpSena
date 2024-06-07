@@ -6,11 +6,12 @@ class Qualification {
     private $IdStudent;
     private $IdSubject;
 
-    public function __construct($Score, $IdStudent, $IdSubject) {
+/*     public function __construct($Score, $IdStudent, $IdSubject)
+    {
         $this->Score = $Score;
         $this->IdStudent = $IdStudent;
         $this->IdSubject = $IdSubject;
-    }
+    } */
 
     public function getId() {
         return $this->Id;

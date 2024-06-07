@@ -7,7 +7,7 @@ include(__DIR__ . "/../../Templates/nav.php");
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <center>
-            <h2>Students Page</h2>
+            <h2>Qualifications Page</h2>
         </center>
 
     </div>
@@ -15,7 +15,7 @@ include(__DIR__ . "/../../Templates/nav.php");
 </div>
 
 <!--buton para agregar nuevo estudiante-->
-<a class="btn btn-primary" href="Create.php" role="button">Add Student</a>
+<a class="btn btn-primary" href="Create.php" role="button">Add Qualification</a>
 <div class="row">
     <table class="table">
         <thead>
@@ -39,7 +39,7 @@ include(__DIR__ . "/../../Templates/nav.php");
                     <a type="button" class="btn btn-primary" href="Details.php?id='. $student->getId().'">Details</a>
                     <a type="button" class="btn btn-warning" href="Edit.php?id='. $student->getId().'">Update</a>
                     <form method="post" action="../../../Controllers/StudentController.php">
-                    <input type="hidden" name="IdStudent" value="'. $student->getId().'">
+                    <input type="hidden" name="Id" value="'. $student->getId().'">
                     <button type="submit" class="btn btn-danger" name="Delete">Delete</button>
                     </form>
                   </div>' . "</td>";
