@@ -16,6 +16,7 @@ include(__DIR__ . "/../../Templates/nav.php");
 
 <!--buton para agregar nuevo estudiante-->
 <a class="btn btn-primary" href="Create.php" role="button">Add Student</a>
+<a href="../Index.php" class="btn btn-success">Regresar</a>
 <div class="row">
     <table class="table">
         <thead>

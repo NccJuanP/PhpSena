@@ -7,11 +7,11 @@ $id = $_GET['id'];
 $route = new StudentController();
 $student = $route->GetById($id);
 ?>
-<a type="submit" class="btn btn-primary" name="Update" href="Index.php">regresar</a>
+<a type="submit" class="btn btn-primary" name="a" href="Index.php">regresar</a>
     <form method="post" action="../../../Controllers/StudentController.php">
   <div class="mb-3">
-    <label for="NameStudent" class="form-label">Id</label>
-    <input type="text" class="form-control" id="NameStudent" name="IdStudent" value="<?php echo $student->getId() ?>" readonly>
+    <label for="IdStudent" class="form-label">Id</label>
+    <input type="text" class="form-control" id="IdStudent" name="IdStudent" value="<?php echo $student->getId() ?>" readonly>
   </div>
   <div class="mb-3">
     <label for="NameStudent" class="form-label">Nombre</label>

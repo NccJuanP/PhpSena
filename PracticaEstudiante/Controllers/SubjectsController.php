@@ -15,9 +15,9 @@ class SubjectController{
         return $Subject;
     }
 
-    public function Add($Student){
+    public function Add($Subject){
         $SubjectsRepository = new SubjectsRepository();
-        $SubjectsRepository->Add($Student);
+        $SubjectsRepository->Add($Subject);
     }
 
     public function Delete($Id){
@@ -25,9 +25,9 @@ class SubjectController{
         $SubjectsRepository->Remove($Id);
     }
 
-    public function Update($Student, $Id){
+    public function Update($Subject, $Id){
         $SubjectsRepository = new SubjectsRepository();
-        $SubjectsRepository->Update($Student, $Id);
+        $SubjectsRepository->Update($Subject, $Id);
     }
 }
 
@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Subject->setDescription($_POST['Description']);
         $SubjectController = new SubjectController();
         $SubjectController->Add($Subject);
+        header("Location: ../Views/Paginas/Subjects/Index.php");
     }
 
     else if(isset($_POST['Update'])){
@@ -56,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else if(isset($_POST['Delete'])){
         $SubjectController = new SubjectController();
         $SubjectController->Delete($_POST['Id']);
+        header("Location: ../Views/Paginas/Subjects/Index.php");
     }
 
     else if(isset($_POST['GetById'])){

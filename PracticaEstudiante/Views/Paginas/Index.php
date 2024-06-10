@@ -37,7 +37,7 @@ include(__DIR__ . "/../Templates/nav.php");
             <div class="card-body">
                 <h5 class="card-title">Qualifications</h5>
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">Go Qualifications</a>
+                <a href="./Qualifications/Index.php" class="btn btn-primary">Go Qualifications</a>
             </div>
         </div>
     </div>

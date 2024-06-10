@@ -31,22 +31,31 @@ class QualificationsController{
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(isset($_POST['Create'])){
-        $qualification = new Qualification($_POST['Score'], $_POST['IdStudent'], $_POST['IdSubject']);
+        $qualification = new Qualification();
+        $qualification->setScore($_POST['Score']);
+        $qualification->setIdStudent($_POST['IdStudent']);
+        $qualification->setIdSubject($_POST['IdSubject']);
         $QualificationsController = new QualificationsController();
         $QualificationsController->Add($qualification);
+        header("Location: ../Views/Paginas/Qualifications/Index.php");
     }
 
     else if(isset($_POST['Update'])){
-        $qualification = new Qualification($_POST['Score'], $_POST['IdStudent'], $_POST['IdSubject']);
-        $id =  $_POST['IdStudent'];
+        $qualification = new Qualification();
+        $qualification->setScore($_POST['Score']);
+        $qualification->setIdStudent($_POST['IdStudent']);
+        $qualification->setIdSubject($_POST['IdSubject']);
+        $id =  $_POST['Id'];
         $QualificationsController = new QualificationsController();
         $QualificationsController->Update($qualification, $id);
+        header("Location: ../Views/Paginas/Qualifications/Index.php");
     }
 
     else if(isset($_POST['Delete'])){
-        $id = ($_POST['IdStudent']);
+        $id = ($_POST['Id']);
         $QualificationsController = new QualificationsController();
         $QualificationsController->Remove($id);
+        header("Location: ../Views/Paginas/Qualifications/Index.php");
     }
 
     else if(isset($_POST['GetById'])){

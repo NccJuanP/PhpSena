@@ -98,8 +98,7 @@ class SubjectsRepository implements ISubjectsRepository
         $stmt = $conn->prepare("UPDATE Subjects SET Name =?, Description =? WHERE Id =?");
         $name = $Subject->getName();
         $description = $Subject->getDescription();
-        $id = $Subject->getId();
-        $stmt->bind_param("ssi", $name, $description, $id);
+        $stmt->bind_param("ssi", $name, $description, $Id);
         if ($stmt->execute()) {
             echo "Los Datos se han actualizado exitosamente";
         } else {

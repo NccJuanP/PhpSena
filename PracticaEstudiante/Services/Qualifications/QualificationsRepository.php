@@ -12,21 +12,25 @@ class QualificationsRepository implements IQualificationsRepository
         $db = new DbContext();
         $conn = $db->DbSet();
         $stmt = $conn->prepare("INSERT INTO Qualifications (Score, IdStudent, IdSubject) VALUES (?, ?, ?)");
-        $Score   = $Qualification->getScore();
-        $IdStudent   = $Qualification->getIdStudent();
-        $IdSubject = $Qualification->getIdSubject();
-        $stmt->bind_param("d,i,i", $Score,  $IdStudent, $IdSubject);
-
+        
+        $Score = floatval($Qualification->getScore());
+        $IdStudent = intval($Qualification->getIdStudent());
+        $IdSubject = intval($Qualification->getIdSubject());
+    
+        // La cadena de tipos debe ser "dii" sin comas
+        $stmt->bind_param("dii", $Score, $IdStudent, $IdSubject);
+    
         if ($stmt->execute()) {
             echo "Los Datos se han guardado exitosamente";
         } else {
             echo "Error en los datos: " . $stmt->error;
         }
-
+    
         // Cierra la conexión
         $stmt->close();
         $conn->close();
     }
+    
 
     public function GetAll()
     {
@@ -89,10 +93,10 @@ class QualificationsRepository implements IQualificationsRepository
         $db = new DbContext();
         $conn = $db->DbSet();
         $stmt = $conn->prepare("UPDATE Qualifications SET Score =?, IdStudent =?, IdSubject =? WHERE Id =?");
-        $Score   = $Qualification->getScore();
-        $IdStudent   = $Qualification->getIdStudent();
-        $IdSubject = $Qualification->getIdSubject();
-        $stmt->bind_param("d,i,i,i", $Score,  $IdStudent, $IdSubject, $Id);
+        $Score   = floatval($Qualification->getScore());
+        $IdStudent   = intval($Qualification->getIdStudent());
+        $IdSubject = intval($Qualification->getIdSubject());
+        $stmt->bind_param("diii", $Score,  $IdStudent, $IdSubject, $Id);
 
         if ($stmt->execute()) {
             echo "Los Datos se han Actualizado exitosamente";
