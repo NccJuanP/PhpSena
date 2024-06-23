@@ -4,6 +4,7 @@ class Student {
     private $Id;
     private $Name;
     private $Grupo;
+    private $notas = array();
 
 /*     public function __construct($Name, $Grupo) {
         $this->Name = $Name;
@@ -22,6 +23,10 @@ class Student {
         return $this->Grupo;
     }
 
+    public function getNotas() {
+        return $this->notas;
+    }
+
     public function setId($Id) {
         $this->Id = $Id;
     }
@@ -32,5 +37,9 @@ class Student {
 
     public function setGrupo($Grupo) {
         $this->Grupo = $Grupo;
+    }
+
+    public function setNotas($nota) {
+        array_push($this->notas, $nota);
     }
 }

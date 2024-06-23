@@ -7,4 +7,5 @@ interface IQualificationsRepository
     public function Add($Qualification);
     public function Remove($Id);
     public function Update($Qualification, $Id);
+    public function GetByStudentId($Id);
 }

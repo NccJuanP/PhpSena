@@ -64,7 +64,7 @@ class StudentRepository implements IStudentsRepository
         // Cierra la conexión
         $stmt->close();
         $conn->close();
-        return $student;
+        return self::GetNotas($Id, $student);;
     }
 
     public function Remove($Id)
@@ -104,4 +104,36 @@ class StudentRepository implements IStudentsRepository
         $stmt->close();
         $conn->close();
     }
+
+    public function GetNotas($id, $student) {
+        $db = new DbContext();
+        $conn = $db->DbSet();
+        
+        // Preparar la consulta con JOIN para obtener los nombres de las materias
+        $stmt = $conn->prepare("SELECT
+        q.*,
+        s.Name
+    FROM
+        Qualifications q
+    JOIN Subjects s ON
+        q.IdSubject = s.Id
+    WHERE
+        q.IdStudent = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        while ($row = $result->fetch_object()) {
+            // Aquí puedes almacenar las notas y el nombre de la materia en el objeto student
+            // Supongamos que el método setNotas del objeto student puede recibir el nombre de la materia
+            $student->setNotas($row);
+        }
+        
+        // Cierra la conexión
+        $stmt->close();
+        $conn->close();
+        
+        return $student;
+    }
+    
 }

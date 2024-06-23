@@ -22,6 +22,32 @@ $student = $route->GetById($id);
   </div>
 </form>
 <a type="submit" class="btn btn-primary" name="Create" href="Index.php">regresar</a>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Names</th>
+                <th>Qualifications</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            //echo strval($student->getNotas());
+            foreach ($student->getNotas() as $notas) {
+                echo "<tr>";
+                echo "<td>" . $notas->Id. "</td>";
+                echo "<td>" . $notas->Name. "</td>";
+                echo "<td>" . $notas->Score. "</td>";
+                echo '<td>'. '<div class="btn-group" role="group" aria-label="Basic example">
+                <a type="submit" class="btn btn-primary" name="Create" href="../Qualifications/QualificationByStudent.php?Id='. $student->getId() .'">view</a>
+                </div>'. '</td>';
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
 <?php
 }
 include("../../Templates/Footer.php"); 

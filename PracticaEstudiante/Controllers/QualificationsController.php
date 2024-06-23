@@ -25,6 +25,12 @@ class QualificationsController{
         $QualificationsRepository = new QualificationsRepository();
         $QualificationsRepository->Update($Qualification, $Id);
     }
+
+    public function GetByStudentId($StudentId){
+        $QualificationsRepository = new QualificationsRepository();
+        $qualification = $QualificationsRepository->GetByStudentId($StudentId);
+        return $qualification;
+    }
 }
 
 //Simulacion de las rutas

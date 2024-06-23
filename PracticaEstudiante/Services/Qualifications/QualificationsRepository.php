@@ -107,4 +107,24 @@ class QualificationsRepository implements IQualificationsRepository
         $stmt->close();
         $conn->close();
     }
+
+    public function GetByStudentId($id){
+         // Implement the GetAll method here
+         $db = new DbContext();
+         $conn = $db->DbSet();
+         $stmt = $conn->prepare("SELECT * FROM Qualifications WHERE IdStudent = ?");
+         $stmt->bind_param("i", $id);
+         $stmt->execute();
+         $result = $stmt->get_result();
+         $Qualifications = array();
+         while ($row = $result->fetch_assoc()) {
+             $Qualification = new Qualification();
+             $Qualification->setId($row['Id']);
+             $Qualification->setScore($row['Score']);
+             $Qualification->setIdStudent($row['IdStudent']);
+             $Qualification->setIdSubject($row['IdSubject']);
+             array_push($Qualifications, $Qualification);
+         }
+         return $Qualifications;
+    }
 }
